@@ -1,0 +1,44 @@
+name:                diceware-phrase
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/srdqty/diceware-phrase#readme
+license:             MIT
+license-file:        LICENSE
+author:              Sophia Donataccio
+maintainer:          srdqty@gmail.com
+copyright:           2017 Sophia Donataccio
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     DicewarePhrase.WordList
+  build-depends:       base >= 4.7 && < 5
+                     , containers
+  ghc-options:         -fwarn-incomplete-patterns -fwarn-dodgy-exports -fwarn-dodgy-imports -fwarn-unused-matches -fwarn-unused-imports -fwarn-unused-binds
+  default-language:    Haskell2010
+
+executable diceware-phrase
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N -fwarn-incomplete-patterns -fwarn-dodgy-exports -fwarn-dodgy-imports -fwarn-unused-matches -fwarn-unused-imports -fwarn-unused-binds
+  build-depends:       base
+                     , diceware-phrase
+                     , containers
+  default-language:    Haskell2010
+
+test-suite diceware-phrase-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , diceware-phrase
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/srdqty/diceware-phrase
