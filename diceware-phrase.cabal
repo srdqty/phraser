@@ -18,6 +18,10 @@ library
   exposed-modules:     DicewarePhrase.WordList
   build-depends:       base >= 4.7 && < 5
                      , containers
+                     , cryptonite
+                     , memory
+                     , word8
+                     , mtl
   ghc-options:         -fwarn-incomplete-patterns -fwarn-dodgy-exports -fwarn-dodgy-imports -fwarn-unused-matches -fwarn-unused-imports -fwarn-unused-binds
   default-language:    Haskell2010
 
@@ -28,6 +32,10 @@ executable diceware-phrase
   build-depends:       base
                      , diceware-phrase
                      , containers
+                     , cryptonite
+                     , memory
+                     , word8
+                     , mtl
   default-language:    Haskell2010
 
 test-suite diceware-phrase-test
