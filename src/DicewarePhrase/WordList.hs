@@ -1,9 +1,14 @@
-module DicewarePhrase.WordList (wordList) where
+--------------------------------------------------------------------------------
+module DicewarePhrase.WordList
+    ( wordList
+    ) where
 
-import qualified Data.Map.Strict as Map (fromList)
+--------------------------------------------------------------------------------
+import qualified Data.Map.Strict as Map (Map, fromList)
 
+--------------------------------------------------------------------------------
 -- Source of list: http://world.std.com/~reinhold/diceware.wordlist.asc
-
+wordList :: Map.Map Integer String
 wordList = Map.fromList
     [ (11111, "a")
     , (11112, "a&p")
@@ -7782,3 +7787,4 @@ wordList = Map.fromList
     , (66665, "??")
     , (66666, "@")
     ]
+
