@@ -1,8 +1,8 @@
-name:                diceware-phrase
+name:                phraser
 version:             0.1.0.0
--- synopsis:
--- description:
-homepage:            https://github.com/srdqty/diceware-phrase#readme
+synopsis:            Generate a passphrase using the diceware method.
+description:         Generate a passphrase using the diceware method.
+homepage:            https://github.com/srdqty/phraser
 license:             MIT
 license-file:        LICENSE
 author:              Sophia Donataccio
@@ -15,8 +15,8 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     DicewarePhrase.WordList
-                     , DicewarePhrase
+  exposed-modules:     Phraser.WordList
+                     , Phraser.Phrase
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , cryptonite
@@ -26,12 +26,12 @@ library
   ghc-options:         -fwarn-incomplete-patterns -fwarn-dodgy-exports -fwarn-dodgy-imports -fwarn-unused-matches -fwarn-unused-imports -fwarn-unused-binds -Wall -Werror
   default-language:    Haskell2010
 
-executable diceware-phrase
+executable phraser
   hs-source-dirs:      app
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N -fwarn-incomplete-patterns -fwarn-dodgy-exports -fwarn-dodgy-imports -fwarn-unused-matches -fwarn-unused-imports -fwarn-unused-binds -Wall -Werror
   build-depends:       base
-                     , diceware-phrase
+                     , phraser
                      , containers
                      , cryptonite
                      , memory
@@ -39,15 +39,15 @@ executable diceware-phrase
                      , mtl
   default-language:    Haskell2010
 
-test-suite diceware-phrase-test
+test-suite phraser-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base
-                     , diceware-phrase
+                     , phraser
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N -fwarn-incomplete-patterns -fwarn-dodgy-exports -fwarn-dodgy-imports -fwarn-unused-matches -fwarn-unused-imports -fwarn-unused-binds -Wall -Werror
   default-language:    Haskell2010
 
 source-repository head
   type:     git
-  location: https://github.com/srdqty/diceware-phrase
+  location: https://github.com/srdqty/phraser

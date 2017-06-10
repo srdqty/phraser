@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 
 --------------------------------------------------------------------------------
-module DicewarePhrase
+module Phraser.Phrase
     ( genPhrase
     , genWord
     , GenError (..)
@@ -19,7 +19,7 @@ import qualified Data.Map as Map (lookup)
 import           Data.Word8 (Word8)
 
 --------------------------------------------------------------------------------
-import           DicewarePhrase.WordList (wordList)
+import           Phraser.WordList (wordList)
 
 --------------------------------------------------------------------------------
 data GenError = CannotFindWordWithIndex Integer

@@ -6,7 +6,7 @@ import Data.Maybe (fromJust)
 import Crypto.Random (getSystemDRG, randomBytesGenerate, SystemDRG)
 import Data.ByteArray (unpack, Bytes)
 
-import DicewarePhrase.WordList (wordList)
+import Phraser.WordList (wordList)
 
 diceToInt :: Integral a => [a] -> a
 diceToInt ns = sum (zipWith (*) ns [1, 10, 100, 1000, 10000])

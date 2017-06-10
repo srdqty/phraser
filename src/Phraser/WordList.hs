@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-module DicewarePhrase.WordList
+module Phraser.WordList
     ( wordList
     ) where
 
