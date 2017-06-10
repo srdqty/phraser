@@ -17,12 +17,14 @@ library
   hs-source-dirs:      src
   exposed-modules:     Phraser.WordList
                      , Phraser.Phrase
+                     , Phraser.OptionsParser
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , cryptonite
                      , memory
                      , word8
                      , mtl
+                     , optparse-applicative
   ghc-options:         -fwarn-incomplete-patterns -fwarn-dodgy-exports -fwarn-dodgy-imports -fwarn-unused-matches -fwarn-unused-imports -fwarn-unused-binds -Wall -Werror
   default-language:    Haskell2010
 
@@ -37,6 +39,7 @@ executable phraser
                      , memory
                      , word8
                      , mtl
+                     , optparse-applicative
   default-language:    Haskell2010
 
 test-suite phraser-test
