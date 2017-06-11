@@ -5,6 +5,7 @@ module Main where
 
 -------------------------------------------------------------------------------
 
+-------------------------------------------------------------------------------
 import Control.Monad.Except (runExceptT)
 import Control.Monad.State (evalStateT)
 import Data.Version (showVersion)
