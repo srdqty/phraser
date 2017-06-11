@@ -97,6 +97,6 @@ wordFileOption :: Parser (Maybe FilePath)
 wordFileOption = optional
                $ option auto
                $ long "word-file"
-              <> short 'n'
+              <> short 'w'
               <> metavar "WORD_FILENAME"
               <> help "Optional file for populating the word map."
