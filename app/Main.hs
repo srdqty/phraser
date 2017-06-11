@@ -1,26 +1,25 @@
+{-# LANGUAGE TemplateHaskell #-}
+
+-------------------------------------------------------------------------------
 module Main where
 
-import Control.Monad.State (evalStateT, replicateM, StateT, get, put)
-import qualified Data.Map as Map (lookup)
-import Data.Maybe (fromJust)
-import Crypto.Random (getSystemDRG, randomBytesGenerate, SystemDRG)
-import Data.ByteArray (unpack, Bytes)
+-------------------------------------------------------------------------------
 
-import Phraser.WordList (wordList)
+import Control.Monad.Except (runExceptT)
+import Control.Monad.State (evalStateT)
+import Data.Version (showVersion)
+import Development.GitRev (gitHash)
+import Paths_phraser (version)
 
-diceToInt :: Integral a => [a] -> a
-diceToInt ns = sum (zipWith (*) ns [1, 10, 100, 1000, 10000])
+-------------------------------------------------------------------------------
+import Phraser.OptionsParser (Options (..), parseOptions)
+import Phraser.Phrase (genPhrase)
+import Phraser.Random (newDRG)
 
+-------------------------------------------------------------------------------
 main :: IO ()
-main = getSystemDRG >>= evalStateT genPhrase >>= putStrLn
-
-genPhrase :: StateT SystemDRG IO String
-genPhrase = unwords <$> replicateM 10 genWord
-    where
-        genWord :: StateT SystemDRG IO String
-        genWord = do
-            drg <- get
-            let (ns, drg') = randomBytesGenerate 5 drg :: (Bytes, SystemDRG)
-            put drg'
-            let n = diceToInt ((+1) . round . (*5) . (/255) . toRational <$> unpack ns)
-            return (fromJust $ Map.lookup n wordList)
+main = do
+    (Options n s _) <- parseOptions (showVersion version) $(gitHash)
+    drg <- newDRG s
+    phrase <- runExceptT $ evalStateT (genPhrase n) drg
+    either print putStrLn phrase
