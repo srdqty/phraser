@@ -20,3 +20,26 @@ git clone https://github.com/srdqty/phraser.git
 cd phraser
 stack install --local-bin-path $HOME/.local/bin
 ```
+
+## Help
+
+Note: the word file option is not actually supported yet.
+
+```
+phraser - Generate a passphrase using the diceware method.
+
+Usage: phraser [-v|--version] [-n|--number-of-words NUMBER_OF_WORDS]
+               [-s|--seed-integer SEED_INTEGER] [-w|--word-file WORD_FILENAME]
+  phraser - Generate a passphrase using the diceware method.
+
+Available options:
+  -h,--help                Show this help text
+  -v,--version             Show version
+  -n,--number-of-words NUMBER_OF_WORDS
+                           The number of words to use in the generated
+                           passphrase. (default: 10)
+  -s,--seed-integer SEED_INTEGER
+                           Optional integer for seeding the random generator.
+  -w,--word-file WORD_FILENAME
+                           Optional file for populating the word map.
+```
