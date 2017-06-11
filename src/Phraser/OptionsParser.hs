@@ -35,10 +35,13 @@ import Options.Applicative
 
 --------------------------------------------------------------------------------
 data Options = Options
-    { numberOfWords :: Integer
+    { numberOfWords :: Int
     , seedValue :: Maybe Seed
     , wordFile :: Maybe FilePath
     }
+
+instance Show Options where
+    show (Options n _ _) = "Options{" <> show n <> "}"
 
 --------------------------------------------------------------------------------
 parseOptions :: String -> String -> IO Options
@@ -63,7 +66,7 @@ options = Options
       <*> wordFileOption
 
 --------------------------------------------------------------------------------
-numberOfWordsOption :: Parser Integer
+numberOfWordsOption :: Parser Int
 numberOfWordsOption = option auto
                     $ long "number-of-words"
                    <> short 'n'
@@ -79,7 +82,7 @@ seedValueOption :: Parser (Maybe Seed)
 seedValueOption = optional
                 $ option seedReader
                 $ long "seed-integer"
-               <> short 'n'
+               <> short 's'
                <> metavar "SEED_INTEGER"
                <> help helpString
   where
