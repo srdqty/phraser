@@ -12,3 +12,11 @@ and [Haddock](https://www.haskell.org/haddock).
 So hopefully it's a simple demonstration of those things.
 
 ## Install
+
+The simplest way is to use [stack](https://haskellstack.org).
+
+```
+git clone https://github.com/srdqty/phraser.git
+cd phraser
+stack install --local-bin-path $HOME/.local/bin
+```
