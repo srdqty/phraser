@@ -57,8 +57,6 @@ parseOptions versionString commitHash
                     (long "version" <> short 'v' <> help "Show version")
 
 --------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------
 options :: Parser Options
 options = Options
       <$> numberOfWordsOption
@@ -90,7 +88,7 @@ seedValueOption = optional
     seedReader :: ReadM Seed
     seedReader = eitherReader $ \arg -> case reads arg of
         [(n, "")] -> return $ seedFromInteger n
-        _        -> Left $ "cannot parse value `" ++ arg ++ "'"
+        _         -> Left $ "cannot parse value `" <> arg <> "'"
 
 --------------------------------------------------------------------------------
 wordFileOption :: Parser (Maybe FilePath)
