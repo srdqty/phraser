@@ -8,6 +8,7 @@ module Phraser.Phrase
     ) where
 
 --------------------------------------------------------------------------------
+import           Data.Semigroup ((<>))
 import           Data.Tuple (swap)
 
 --------------------------------------------------------------------------------
@@ -24,9 +25,12 @@ import           Phraser.WordList (wordList)
 --------------------------------------------------------------------------------
 data GenError = CannotFindWordWithIndex Integer
 
+instance Show GenError where
+    show (CannotFindWordWithIndex n) = "Cannot find word with index " <> show n
+
 --------------------------------------------------------------------------------
-genPhrase :: (DRG g, MonadError GenError m, MonadState g m) => m String
-genPhrase = unwords <$> replicateM 10 genWord
+genPhrase :: (DRG g, MonadError GenError m, MonadState g m) => Int -> m String
+genPhrase n = unwords <$> replicateM n genWord
 
 --------------------------------------------------------------------------------
 genWord :: (DRG g, MonadError GenError m, MonadState g m) => m String
@@ -53,7 +57,7 @@ byteToIntegral = (+1) . round . (*5) . (/255) . toRational
 
 --------------------------------------------------------------------------------
 wordLookup :: (MonadError GenError m) => Integer -> m String
-wordLookup n =
-    foldr (fmap . const)
-          (throwError $ CannotFindWordWithIndex n)
-          (Map.lookup n wordList)
+wordLookup n = maybe
+               (throwError $ CannotFindWordWithIndex n)
+               return
+               (Map.lookup n wordList)
