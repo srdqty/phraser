@@ -21,5 +21,5 @@ main :: IO ()
 main = do
     (Options n s _) <- parseOptions (showVersion version) $(gitHash)
     drg <- newDRG s
-    phrase <- runExceptT $ evalStateT (genPhrase n) drg
-    either print putStrLn phrase
+    errorOrPhrase <- runExceptT $ evalStateT (genPhrase n) drg
+    either print putStrLn errorOrPhrase
