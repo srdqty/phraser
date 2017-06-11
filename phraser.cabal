@@ -1,7 +1,7 @@
 name:                phraser
 version:             0.1.0.0
 synopsis:            Generate a passphrase using the diceware method.
-description:         Generate a passphrase using the diceware method.
+description:         Please see README.md
 homepage:            https://github.com/srdqty/phraser
 license:             MIT
 license-file:        LICENSE
@@ -18,6 +18,7 @@ library
   exposed-modules:     Phraser.WordList
                      , Phraser.Phrase
                      , Phraser.OptionsParser
+                     , Phraser.Random
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , cryptonite
@@ -40,6 +41,7 @@ executable phraser
                      , word8
                      , mtl
                      , optparse-applicative
+                     , gitrev
   default-language:    Haskell2010
 
 test-suite phraser-test
